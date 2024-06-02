@@ -1,0 +1,32 @@
+<h1>Hello, {{ username }}!</h1>
+<h1>Parola pe care vrei sa aplici cifrul lui Cezar este: {{ password }}</h1>
+<form (ngSubmit)="saveCezarData()">
+  <label for="normalString">Text normal:</label><br />
+  <input
+    type="text"
+    id="normalString"
+    name="normalString"
+    [(ngModel)]="normalString"
+    required
+  /><br /><br />
+  <button type="submit">Salveaza</button>
+</form>
+<table *ngIf="data!.length > 0">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Encrypted String</th>
+      <th>Normal String</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let entry of data">
+      <td>{{ entry.username }}</td>
+      <td>{{ entry.encryptedString }}</td>
+      <td>{{ entry.normalString }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="data!
+.length === 0">No Cezar entries found.</div>
